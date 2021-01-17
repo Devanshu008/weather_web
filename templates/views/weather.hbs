@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>headerLinks}}
+</head>
+
+<body>
+    {{>navbar}}
+ 
+    <!--main header-->
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+               <div class="main_content">
+                   <form class="temp_form">
+                       <input type="text" id="cityName" placeholder="Enter your city name" autocomplete="off">
+                       <input type="submit" value="Search" id="SubmitBtn">
+                   </form>
+               </div>
+               <div class="tempInformation">
+                   <div class="top_layer">
+                       <p id="day"></p>
+                       <p id="today_date"></p>
+                   </div>
+                   <div class="main_layer ">
+                       <p id="city_name">City Name</p>
+                       <div class="middle_layer data_hide">
+                           <p id="temp"><span id="temp_rel_value">0</span> <sup class="temp_sign">o</sup>C</p>
+                           <p id="temp_status"></p>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+   {{>footer}}
+   {{>scriptLinks}}
+    <script>
+       
+        const getCDate = () => {
+            var weekday = new Array(7);
+            weekday[0] = "Sun";
+            weekday[1] = "Mon";
+            weekday[2] = "Tue";
+            weekday[3] = "Wed";
+            weekday[4] = "Thu";
+            weekday[5] = "Fri";
+            weekday[6] = "Sat";
+            var currnetTime = new Date();
+            days = weekday[currnetTime.getDay()];
+            let day =document.getElementById('day');
+            day.innerText=days;
+        }
+        getCDate();
+         const getCurrnetTime = () => {
+            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+            var now = new Date();
+            var month = months[now.getMonth()];
+            var year = now.getFullYear();
+            var date = now.getDate();
+            let today_date =document.getElementById('today_date');
+            today_date.innerHTML= `${date}<sup>th</sup> ${month} ${year}`;
+        }
+        getCurrnetTime();
+    </script>
+
+
+    
+</body>
+
+</html>
